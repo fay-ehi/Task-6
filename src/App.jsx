@@ -51,16 +51,22 @@ const addFavorite = async (book) => {
     <div className="container">
       <h1>📚 Book Tracker</h1>
 
-      <div className="search-box">
-        <input
-          type="text"
-          placeholder="Search for books..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && searchBooks()}
-        />
-        <button onClick={searchBooks}>Search</button>
-      </div>
+      <form
+  onSubmit={(e) => {
+    e.preventDefault();
+    searchBooks();
+  }}
+  className="search-box"
+>
+  <input
+    type="text"
+    placeholder="Search for books..."
+    value={query}
+    onChange={(e) => setQuery(e.target.value)}
+  />
+  <button type="submit">Search</button>
+</form>
+
       
       {books.length > 0 && (
   <>
